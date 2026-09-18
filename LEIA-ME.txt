@@ -1,0 +1,35 @@
+CYBER LIVROS — PASTA "livros/"
+================================
+
+Esta pasta deve conter os arquivos PDF dos livros exibidos no site.
+
+O arquivo "scripts.js" já está pronto para funcionar assim que você
+colocar aqui os PDFs com EXATAMENTE estes nomes:
+
+  1. 48-leis-do-poder.pdf
+  2. casais-inteligentes-enriquecem-juntos.pdf
+  3. codigo-limpo.pdf
+  4. como-fazer-amigos-e-influenciar-pessoas.pdf
+  5. harry-potter-e-a-ordem-da-fenix.pdf
+
+IMPORTANTE — DIREITOS AUTORAIS
+-------------------------------
+Os 5 livros acima são obras com direitos autorais vigentes (não são de
+domínio público). Publicá-los para leitura ou download gratuito em um
+site, mesmo sem fins lucrativos, pode configurar violação de direitos
+autorais perante a lei brasileira (Lei 9.610/1998) e as editoras
+responsáveis.
+
+Antes de colocar qualquer PDF nesta pasta, use apenas:
+  - obras de domínio público (ex.: dominiopublico.gov.br,
+    Project Gutenberg, autores falecidos há mais de 70 anos); ou
+  - obras que você tenha autorização/licença expressa do autor ou
+    da editora para distribuir gratuitamente.
+
+COMO ADICIONAR NOVOS LIVROS NO FUTURO
+--------------------------------------
+1. Coloque o novo arquivo PDF nesta pasta.
+2. Coloque a capa correspondente na pasta "assets/capas/".
+3. Abra o arquivo "scripts.js" e adicione um novo item dentro da
+   constante "listaDeLivros", seguindo o mesmo modelo dos livros
+   já cadastrados. Não é necessário alterar o HTML.

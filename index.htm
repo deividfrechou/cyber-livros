@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Livros — Biblioteca Aberta</title>
+    <meta name="description" content="Cyber Livros: uma biblioteca digital aberta e gratuita. Biblioteca aberta é incentivo à cultura.">
+
+    <!-- Favicon: usa o mesmo logotipo exibido no cabeçalho do site -->
+    <link rel="icon" type="image/png" href="assets/logo.png">
+
+    <!-- Fontes: uma serifada para títulos (clima de biblioteca) e uma sem serifa para textos e botões -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+    <!-- ===================================================================
+         CABEÇALHO / BARRA SUPERIOR
+         Reúne o logotipo do site, o slogan e o campo de busca,
+         tudo em uma única faixa no topo da página.
+    ==================================================================== -->
+    <header class="cabecalho">
+        <div class="cabecalho__identidade">
+            <img class="logotipo" src="assets/logo.png" alt="Cyber Livros">
+            <div class="cabecalho__textos">
+                <!-- O nome "Cyber Livros" já aparece desenhado dentro do logotipo.
+                     Por isso o título fica como texto visualmente oculto: continua
+                     existindo para leitores de tela e para SEO, sem duplicar o
+                     nome na tela. -->
+                <h1 class="cabecalho__titulo rotulo-visualmente-oculto">Cyber Livros</h1>
+                <p class="cabecalho__slogan">biblioteca aberta é incentivo a cultura</p>
+            </div>
+        </div>
+
+        <div class="cabecalho__busca">
+            <label for="campo-busca" class="rotulo-visualmente-oculto">Buscar no acervo</label>
+            <input
+                type="search"
+                id="campo-busca"
+                class="campo-busca"
+                placeholder="Buscar por título ou autor..."
+                autocomplete="off"
+            >
+        </div>
+    </header>
+
+    <!-- ===================================================================
+         LAYOUT PRINCIPAL: BARRA LATERAL DE CATEGORIAS + CONTEÚDO
+    ==================================================================== -->
+    <div class="layout-com-barra-lateral">
+
+        <!-- ---------------------------------------------------------------
+             BARRA LATERAL DE CATEGORIAS
+             A lista de categorias é montada automaticamente pelo
+             scripts.js, a partir das categorias presentes em
+             "listaDeLivros". Clicar em uma categoria filtra o acervo.
+        ---------------------------------------------------------------- -->
+        <aside class="barra-lateral" aria-label="Categorias de livros">
+            <h2 class="barra-lateral__titulo">Categorias</h2>
+            <ul id="lista-categorias" class="lista-categorias">
+                <!-- Itens de categoria gerados dinamicamente aparecerão aqui -->
+            </ul>
+        </aside>
+
+        <!-- ---------------------------------------------------------------
+             CONTEÚDO PRINCIPAL
+        ---------------------------------------------------------------- -->
+        <main class="conteudo-principal">
+
+            <!-- Acervo completo (ou resultado filtrado por categoria/busca) -->
+            <section class="secao-acervo" aria-labelledby="titulo-secao-acervo">
+                <div class="secao-acervo__cabecalho">
+                    <h2 id="titulo-secao-acervo" class="secao__titulo">Acervo completo</h2>
+                    <p id="contador-resultados" class="contador-resultados" aria-live="polite"></p>
+                </div>
+
+                <div id="grade-de-livros" class="grade-livros">
+                    <!-- Cartões de livro gerados dinamicamente aparecerão aqui -->
+                </div>
+
+                <p id="mensagem-sem-resultado" class="mensagem-sem-resultado" hidden>
+                    Nenhum livro encontrado com esses filtros.
+                </p>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- ===================================================================
+         RODAPÉ
+    ==================================================================== -->
+    <footer class="rodape">
+        <p>
+            Cyber Livros é um projeto de biblioteca digital aberta.
+            Os livros disponibilizados aqui são obras de domínio público
+            ou distribuídas com autorização.
+        </p>
+        <p class="rodape__copyright">&copy; <span id="ano-atual"></span> Cyber Livros. Biblioteca aberta é incentivo a cultura.</p>
+    </footer>
+
+    <!-- ===================================================================
+         MODAL DE DETALHES DO LIVRO
+         Fica escondido por padrão (tag <dialog>). Ao clicar em um livro,
+         o scripts.js preenche este modal com a capa, o título, o autor,
+         a sinopse e outros livros do(a) mesmo(a) autor(a), e o abre por
+         cima da própria página — sem navegar para outra URL.
+         O botão "Ler agora" é o único link que efetivamente leva ao PDF,
+         aberto na mesma aba.
+    ==================================================================== -->
+    <dialog id="modal-livro" class="modal-livro" aria-labelledby="modal-livro-titulo">
+        <button type="button" id="botao-fechar-modal" class="modal-livro__fechar" aria-label="Fechar">
+            &times;
+        </button>
+
+        <div class="modal-livro__conteudo">
+            <img id="modal-livro-capa" class="modal-livro__capa" src="" alt="">
+
+            <div class="modal-livro__texto">
+                <span id="modal-livro-categoria" class="modal-livro__categoria"></span>
+                <h2 id="modal-livro-titulo" class="modal-livro__titulo"></h2>
+                <p id="modal-livro-autor" class="modal-livro__autor"></p>
+                <p id="modal-livro-sinopse" class="modal-livro__sinopse"></p>
+
+                <a id="modal-livro-botao-ler" class="botao-ler-agora" href="#">
+                    Ler agora
+                </a>
+            </div>
+        </div>
+
+        <!-- Lista de outros livros do(a) mesmo(a) autor(a). Só aparece
+             quando existe pelo menos um outro livro do(a) autor(a) no acervo. -->
+        <section id="modal-livro-secao-mais-do-autor" class="modal-livro__mais-do-autor" hidden>
+            <h3 id="modal-livro-titulo-mais-do-autor" class="modal-livro__mais-do-autor-titulo"></h3>
+            <div id="modal-livro-lista-mais-do-autor" class="modal-livro__mais-do-autor-lista">
+                <!-- Miniaturas dos outros livros do(a) autor(a) aparecerão aqui -->
+            </div>
+        </section>
+    </dialog>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
