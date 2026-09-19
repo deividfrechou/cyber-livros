@@ -2,96 +2,47 @@
    CYBER LIVROS — LÓGICA DO SITE (scripts.js)
    =========================================================================
    Este arquivo é responsável por:
-     1. Guardar a lista de livros do acervo (dados);
-     2. Montar a barra lateral de categorias, a partir da lista de livros;
+     1. Ler os dados dos livros a partir do próprio HTML (lista escondida
+        "#dados-dos-livros" em index.htm) e ordená-los alfabeticamente;
+     2. Montar a barra lateral de categorias, a partir desses dados;
      3. Montar a grade do acervo completo;
      4. Filtrar os livros por categoria selecionada e/ou termo de busca;
-     5. Abrir, ao clicar em um livro, um MODAL (janela sobre a própria
-        página) com a sinopse e outros livros do(a) mesmo(a) autor(a),
-        sem nunca sair da página inicial;
+     5. Abrir, ao clicar em um livro, um MODAL (a tag nativa <dialog>,
+        exibida sobre a própria página pelo método "showModal()") com a
+        sinopse e outros livros do(a) mesmo(a) autor(a), sem nunca sair
+        da página inicial;
      6. Abrir o PDF do livro NA MESMA ABA quando o usuário confirma a
         leitura, clicando no botão "Ler agora" dentro do modal.
 
-   COMO ADICIONAR UM NOVO LIVRO NO FUTURO:
-   Basta acrescentar um novo objeto dentro da constante "listaDeLivros",
-   seguindo o mesmo modelo dos livros já cadastrados, e colocar o arquivo
-   PDF correspondente dentro da pasta "livros/". Se a categoria ou o(a)
-   autor(a) já existirem, eles são reaproveitados automaticamente (na
-   barra lateral e na lista de "mais livros do(a) autor(a)"), sem
-   precisar editar o HTML nem esta lógica.
+   IMPORTANTE — DE ONDE VÊM OS DADOS DOS LIVROS:
+   Os livros NÃO são cadastrados aqui neste arquivo. Eles são cadastrados
+   direto no "index.htm", dentro da lista escondida com o id
+   "dados-dos-livros" (cada livro é um item <li> com atributos "data-*").
+   Para adicionar um novo livro, edite o HTML — veja as instruções
+   detalhadas lá mesmo, no comentário acima dessa lista.
+
+   O modal de detalhes usa a tag nativa <dialog>: o navegador cuida
+   sozinho de centralizar a caixa, escurecer o fundo, travar o foco
+   dentro do modal e fechar com a tecla Esc. Por isso não há nenhum
+   código manual para essas partes neste arquivo.
    ========================================================================= */
 
 "use strict";
 
 
-/* -------------------------------------------------------------------------
-   1. DADOS DO ACERVO
-   Cada livro é representado por um objeto com as seguintes propriedades:
-
-     titulo         -> nome do livro, exibido no cartão e no modal
-     autor          -> nome do autor (ou autores) do livro
-     categoria      -> gênero ou área do livro (também usada na barra lateral)
-     sinopse        -> resumo curto exibido no modal, antes de abrir o PDF
-     caminhoDaCapa  -> caminho da imagem da capa (pasta "assets/")
-     caminhoDoPdf   -> caminho do arquivo PDF do livro (pasta "livros/")
-
-   IMPORTANTE SOBRE OS ARQUIVOS PDF:
-   Por respeito aos direitos autorais, este arquivo já vem pronto para
-   funcionar, mas os PDFs devem ser adicionados por você na pasta "livros/",
-   usando exatamente os nomes de arquivo indicados abaixo em
-   "caminhoDoPdf". Publique aqui apenas obras de domínio público ou obras
-   que você tenha autorização/licença para distribuir gratuitamente
-   (veja "livros/LEIA-ME.txt" para mais detalhes).
----------------------------------------------------------------------------- */
-const listaDeLivros = [
-    {
-        titulo: "As 48 Leis do Poder",
-        autor: "Robert Greene",
-        categoria: "Desenvolvimento pessoal",
-        sinopse: "Uma reunião de princípios sobre estratégia, influência e conquista de poder, ilustrados com episódios históricos de líderes, estrategistas e figuras que buscaram e mantiveram posições de destaque.",
-        caminhoDaCapa: "assets/48-leis-do-poder.jpg",
-        caminhoDoPdf: "livros/48-leis-do-poder.pdf"
-    },
-    {
-        titulo: "Casais Inteligentes Enriquecem Juntos",
-        autor: "Gustavo Cerbasi",
-        categoria: "Finanças",
-        sinopse: "Um guia prático sobre como casais podem organizar as finanças em conjunto, evitar conflitos por dinheiro e planejar, juntos, objetivos financeiros de curto, médio e longo prazo.",
-        caminhoDaCapa: "assets/casais-inteligentes-enriquecem-juntos.jpg",
-        caminhoDoPdf: "livros/casais-inteligentes-enriquecem-juntos.pdf"
-    },
-    {
-        titulo: "Código Limpo",
-        autor: "Robert C. Martin",
-        categoria: "Tecnologia",
-        sinopse: "Um guia de boas práticas de programação, com princípios e técnicas para escrever código mais legível, organizado e fácil de manter ao longo do tempo.",
-        caminhoDaCapa: "assets/codigo-limpo.jpg",
-        caminhoDoPdf: "livros/codigo-limpo.pdf"
-    },
-    {
-        titulo: "Como Fazer Amigos e Influenciar Pessoas",
-        autor: "Dale Carnegie",
-        categoria: "Desenvolvimento pessoal",
-        sinopse: "Um clássico sobre relacionamento interpessoal, reunindo princípios práticos para se comunicar melhor, conquistar a confiança das pessoas e construir relações mais positivas.",
-        caminhoDaCapa: "assets/como-fazer-amigos-e-influenciar-pessoas.jpg",
-        caminhoDoPdf: "livros/como-fazer-amigos-e-influenciar-pessoas.pdf"
-    },
-    {
-        titulo: "Harry Potter e a Ordem da Fênix",
-        autor: "J.K. Rowling",
-        categoria: "Ficção",
-        sinopse: "Quinto livro da saga: Harry retorna a Hogwarts em um ano marcado por desconfiança do Ministério da Magia, uma nova professora autoritária e o fortalecimento da resistência contra o retorno de Voldemort.",
-        caminhoDaCapa: "assets/harry-potter-e-a-ordem-da-fenix.jpg",
-        caminhoDoPdf: "livros/harry-potter-e-a-ordem-da-fenix.pdf"
-    }
-];
-
 /** Nome usado para representar "sem filtro de categoria" na barra lateral. */
 const CATEGORIA_TODOS = "Todos";
 
+/**
+ * Lista de livros do acervo, em memória. Começa vazia e é preenchida
+ * pela função "carregarLivrosDoHtml()", assim que a página carrega.
+ * @type {Array<Object>}
+ */
+let listaDeLivros = [];
+
 
 /* -------------------------------------------------------------------------
-   2. ESTADO ATUAL DOS FILTROS
+   1. ESTADO ATUAL DOS FILTROS
    Guarda o que o usuário selecionou até agora (categoria e busca), para
    que os dois filtros possam ser aplicados juntos.
 ---------------------------------------------------------------------------- */
@@ -102,8 +53,9 @@ const estadoDosFiltros = {
 
 
 /* -------------------------------------------------------------------------
-   3. REFERÊNCIAS AOS ELEMENTOS DA PÁGINA (HTML)
+   2. REFERÊNCIAS AOS ELEMENTOS DA PÁGINA (HTML)
 ---------------------------------------------------------------------------- */
+const elementoDadosDosLivros = document.getElementById("dados-dos-livros");
 const elementoListaCategorias = document.getElementById("lista-categorias");
 const elementoGradeDeLivros = document.getElementById("grade-de-livros");
 const elementoCampoBusca = document.getElementById("campo-busca");
@@ -123,6 +75,39 @@ const elementoModalBotaoLer = document.getElementById("modal-livro-botao-ler");
 const elementoModalSecaoMaisDoAutor = document.getElementById("modal-livro-secao-mais-do-autor");
 const elementoModalTituloMaisDoAutor = document.getElementById("modal-livro-titulo-mais-do-autor");
 const elementoModalListaMaisDoAutor = document.getElementById("modal-livro-lista-mais-do-autor");
+
+
+/* -------------------------------------------------------------------------
+   3. LEITURA DOS DADOS DOS LIVROS (A PARTIR DO HTML)
+---------------------------------------------------------------------------- */
+
+/**
+ * Lê os livros cadastrados no HTML (dentro de "#dados-dos-livros"),
+ * converte cada item em um objeto de livro e devolve a lista já
+ * ORDENADA em ordem alfabética pelo título.
+ *
+ * @returns {Array<Object>} Lista de livros lida do HTML, ordenada por título.
+ */
+function carregarLivrosDoHtml() {
+    const itensDeLivro = elementoDadosDosLivros.querySelectorAll("li");
+
+    const livros = Array.from(itensDeLivro).map(function (item) {
+        return {
+            titulo: item.dataset.titulo,
+            autor: item.dataset.autor,
+            categoria: item.dataset.categoria,
+            sinopse: item.dataset.sinopse,
+            caminhoDaCapa: item.dataset.capa,
+            caminhoDoPdf: item.dataset.pdf
+        };
+    });
+
+    livros.sort(function (livroA, livroB) {
+        return livroA.titulo.localeCompare(livroB.titulo, "pt-BR");
+    });
+
+    return livros;
+}
 
 
 /* -------------------------------------------------------------------------
@@ -160,7 +145,7 @@ function obterCategoriasDisponiveis() {
  * (sinopse) em vez de irem direto para o PDF — a leitura só começa
  * quando o usuário confirma no botão "Ler agora" dentro do modal.
  *
- * @param {Object} livro - Objeto com os dados do livro (veja "listaDeLivros").
+ * @param {Object} livro - Objeto com os dados do livro.
  * @returns {HTMLElement} O elemento <article> pronto para ser inserido na página.
  */
 function criarCartaoDeLivro(livro) {
@@ -204,7 +189,8 @@ function criarCartaoDeLivro(livro) {
 
 /**
  * Desenha a lista de livros filtrados dentro da grade principal,
- * substituindo o conteúdo atual da grade.
+ * substituindo o conteúdo atual da grade. A lista chega aqui já
+ * ordenada alfabeticamente, então os cartões seguem essa mesma ordem.
  *
  * @param {Array<Object>} livros - Lista de livros a serem exibidos.
  */
@@ -251,6 +237,9 @@ function renderizarCategorias() {
 
 /* -------------------------------------------------------------------------
    6. MODAL DE DETALHES DO LIVRO (SINOPSE + MAIS DO(A) AUTOR(A))
+   Implementado com a tag nativa <dialog>: o navegador cuida sozinho do
+   fundo escurecido (::backdrop), do fechamento com a tecla Esc e de
+   manter o foco do teclado dentro do modal enquanto ele está aberto.
 ---------------------------------------------------------------------------- */
 
 /**
@@ -312,8 +301,9 @@ function renderizarMaisLivrosDoAutor(livroAtual) {
 
 /**
  * Preenche o modal com os dados do livro escolhido e o exibe por cima
- * da página. Esta é a função chamada sempre que o usuário clica em um
- * livro (seja na grade principal, seja na lista "mais do(a) autor(a)").
+ * da página, usando o método nativo "showModal()". Esta é a função
+ * chamada sempre que o usuário clica em um livro (seja na grade
+ * principal, seja na lista "mais do(a) autor(a)").
  *
  * @param {Object} livro - Livro a ser exibido no modal.
  */
@@ -331,8 +321,9 @@ function abrirModalDoLivro(livro) {
     // Rola o conteúdo do modal para o topo ao trocar de livro.
     elementoModal.scrollTop = 0;
 
-    // "showModal" exibe o <dialog> por cima da página, com fundo
-    // escurecido e captura de foco — sem precisar de nenhuma biblioteca.
+    // "showModal()" exibe o <dialog> por cima da página, com fundo
+    // escurecido e foco travado dentro do modal — tudo isso já vem
+    // pronto do navegador, sem precisar de nenhum código extra.
     if (!elementoModal.open) {
         elementoModal.showModal();
     }
@@ -352,7 +343,8 @@ function fecharModalDoLivro() {
 
 /**
  * Aplica, em conjunto, o filtro de categoria e o filtro de texto sobre
- * a lista completa de livros.
+ * a lista completa de livros. Como "listaDeLivros" já está ordenada
+ * alfabeticamente, o resultado filtrado também sai ordenado.
  *
  * @returns {Array<Object>} Lista de livros que atendem aos filtros atuais.
  */
@@ -428,27 +420,32 @@ function tratarDigitacaoNaBusca() {
    Função executada assim que o HTML termina de carregar.
 ---------------------------------------------------------------------------- */
 function inicializarPagina() {
+    // 1) Lê os livros cadastrados no HTML e já os deixa ordenados.
+    listaDeLivros = carregarLivrosDoHtml();
+
+    // 2) Monta a barra lateral e a grade pela primeira vez.
     renderizarCategorias();
     atualizarTela();
 
+    // 3) Liga os eventos de busca.
     elementoCampoBusca.addEventListener("input", tratarDigitacaoNaBusca);
 
-    // Fecha o modal ao clicar no botão "X".
+    // 4) Fecha o modal ao clicar no botão "X".
     elementoBotaoFecharModal.addEventListener("click", fecharModalDoLivro);
 
-    // Fecha o modal ao clicar fora da caixa de conteúdo (na área escurecida).
-    // O clique em qualquer parte do próprio <dialog> que não seja o
-    // conteúdo interno é considerado "clique no fundo".
+    // 5) Fecha o modal ao clicar na área escurecida ao redor da caixa
+    //    (o "::backdrop" do <dialog>). Quando o clique acontece fora do
+    //    conteúdo do modal, o alvo do evento é o próprio <dialog>.
     elementoModal.addEventListener("click", function (evento) {
         if (evento.target === elementoModal) {
             fecharModalDoLivro();
         }
     });
 
-    // A tecla Esc já fecha o <dialog> automaticamente (comportamento
-    // nativo do navegador), então nenhum código extra é necessário aqui.
+    // A tecla Esc já fecha o <dialog> automaticamente — comportamento
+    // nativo do navegador, sem precisar de nenhum código extra aqui.
 
-    // Preenche o ano atual no rodapé automaticamente.
+    // 6) Preenche o ano atual no rodapé automaticamente.
     elementoAnoAtual.textContent = new Date().getFullYear();
 }
 

@@ -49,6 +49,191 @@
     </header>
 
     <!-- ===================================================================
+         FONTE DE DADOS DOS LIVROS
+         =========================================================================
+         Esta lista NÃO aparece na tela (está com o atributo "hidden").
+         Ela existe só para você cadastrar os livros do acervo aqui, direto
+         no HTML, sem precisar editar o arquivo scripts.js.
+
+         O scripts.js lê os atributos "data-*" de cada item abaixo e monta
+         toda a página automaticamente (grade de livros, categorias,
+         busca, modal de detalhes). Os livros são exibidos em ORDEM
+         ALFABÉTICA pelo título, então não importa a ordem em que você
+         os cadastra aqui.
+
+         COMO ADICIONAR UM NOVO LIVRO:
+           1. Copie um dos blocos de livro abaixo — cada um começa com o
+              marcador "LIVRO" e termina no fechamento do item — e cole
+              antes da linha que fecha esta lista.
+           2. Troque os valores de cada atributo "data-*" pelos dados do
+              novo livro.
+           3. Coloque a imagem da capa na pasta "assets/" e o arquivo PDF
+              na pasta "livros/", usando os mesmos nomes de arquivo que
+              você escreveu em "data-capa" e "data-pdf".
+
+         ATRIBUTOS DE CADA LIVRO:
+           data-titulo    -> nome do livro
+           data-autor     -> nome do autor (ou autores)
+           data-categoria -> gênero ou área do livro (usada na barra lateral)
+           data-sinopse   -> resumo curto, mostrado no modal de detalhes
+           data-capa      -> caminho da imagem da capa (pasta "assets/")
+           data-pdf       -> caminho do arquivo PDF (pasta "livros/")
+    ==================================================================== -->
+    <ul id="dados-dos-livros" class="dados-dos-livros" hidden>
+
+        <!-- LIVRO -->
+        <li
+            data-titulo="As 48 Leis do Poder"
+            data-autor="Robert Greene"
+            data-categoria="Desenvolvimento pessoal"
+            data-sinopse="Uma reunião de princípios sobre estratégia, influência e conquista de poder, ilustrados com episódios históricos de líderes, estrategistas e figuras que buscaram e mantiveram posições de destaque."
+            data-capa="assets/48-leis-do-poder.jpg"
+            data-pdf="livros/48-leis-do-poder.pdf"
+        ></li>
+
+        <!-- LIVRO -->
+        <li
+            data-titulo="Casais Inteligentes Enriquecem Juntos"
+            data-autor="Gustavo Cerbasi"
+            data-categoria="Finanças"
+            data-sinopse="Um guia prático sobre como casais podem organizar as finanças em conjunto, evitar conflitos por dinheiro e planejar, juntos, objetivos financeiros de curto, médio e longo prazo."
+            data-capa="assets/casais-inteligentes-enriquecem-juntos.jpg"
+            data-pdf="livros/casais-inteligentes-enriquecem-juntos.pdf"
+        ></li>
+
+        <!-- LIVRO -->
+        <li
+            data-titulo="Código Limpo"
+            data-autor="Robert C. Martin"
+            data-categoria="Tecnologia"
+            data-sinopse="Um guia de boas práticas de programação, com princípios e técnicas para escrever código mais legível, organizado e fácil de manter ao longo do tempo."
+            data-capa="assets/codigo-limpo.jpg"
+            data-pdf="livros/codigo-limpo.pdf"
+        ></li>
+
+        <!-- LIVRO -->
+        <li
+            data-titulo="Como Fazer Amigos e Influenciar Pessoas"
+            data-autor="Dale Carnegie"
+            data-categoria="Desenvolvimento pessoal"
+            data-sinopse="Um clássico sobre relacionamento interpessoal, reunindo princípios práticos para se comunicar melhor, conquistar a confiança das pessoas e construir relações mais positivas."
+            data-capa="assets/como-fazer-amigos-e-influenciar-pessoas.jpg"
+            data-pdf="livros/como-fazer-amigos-e-influenciar-pessoas.pdf"
+        ></li>
+
+        <!-- LIVRO -->
+        <li
+            data-titulo="Harry Potter e a Ordem da Fênix"
+            data-autor="J.K. Rowling"
+            data-categoria="Ficção"
+            data-sinopse="Quinto livro da saga: Harry retorna a Hogwarts em um ano marcado por desconfiança do Ministério da Magia, uma nova professora autoritária e o fortalecimento da resistência contra o retorno de Voldemort."
+            data-capa="assets/harry-potter-e-a-ordem-da-fenix.jpg"
+            data-pdf="livros/harry-potter-e-a-ordem-da-fenix.pdf"
+        ></li>
+
+        <!-- LIVRO -->
+        <li
+            data-titulo="Dom Casmurro"
+            data-autor="Machado de Assis"
+            data-categoria="Literatura brasileira"
+            data-sinopse="Narrado por Bentinho, o livro acompanha suas lembranças desde a infância no Rio de Janeiro do século XIX até o casamento com Capitu, marcado pela dúvida que atravessa toda a narrativa sobre a fidelidade dela."
+            data-capa="assets/Dom-Casmurro-machado-de-assis.jpg"
+            data-pdf="livros/Dom-Casmurro-machado-de-assis.pdf"
+        ></li>
+
+        <!-- LIVRO -->
+        <li
+            data-titulo="Helena"
+            data-autor="Machado de Assis"
+            data-categoria="Literatura brasileira"
+            data-sinopse="Ao morrer, o conselheiro Vale revela em testamento a existência de uma filha, Helena, que passa a viver com a família do falecido, dando início a uma trama de segredos e afetos."
+            data-capa="assets/Helena-machado-de-assis.jpg"
+            data-pdf="livros/Helena-machado-de-assis.pdf"
+        ></li>
+
+        <!-- LIVRO -->
+        <li
+            data-titulo="Memórias Póstumas de Brás Cubas"
+            data-autor="Machado de Assis"
+            data-categoria="Literatura brasileira"
+            data-sinopse="Narrado por um defunto-autor, o romance revisita, com ironia e humor, a vida de Brás Cubas e os costumes da sociedade brasileira do século XIX."
+            data-capa="assets/Memorias-Postumas-de-Bras-Cubas-machado-de-assis.jpg"
+            data-pdf="livros/Memorias-Postumas-de-Bras-Cubas-machado-de-assis.pdf"
+        ></li>
+
+        <!-- LIVRO -->
+        <li
+            data-titulo="O Alienista"
+            data-autor="Machado de Assis"
+            data-categoria="Literatura brasileira"
+            data-sinopse="Um médico decide investigar cientificamente a loucura na pequena cidade de Itaguaí, internando cada vez mais moradores em seu hospício, até os limites da sua própria definição de sanidade."
+            data-capa="assets/O-Alienista-machado-de-assis.jpg"
+            data-pdf="livros/O-Alienista-machado-de-assis.pdf"
+        ></li>
+
+        <!-- LIVRO -->
+        <li
+            data-titulo="O Espelho"
+            data-autor="Machado de Assis"
+            data-categoria="Literatura brasileira"
+            data-sinopse="Em uma conversa entre amigos, um deles relembra um episódio de juventude em que passou a se sentir 'duas almas' diante de um espelho, uma reflexão sobre identidade e aparência social."
+            data-capa="assets/o-espelho-machado-de-assis.jpg"
+            data-pdf="livros/o-espelho-machado-de-assis.pdf"
+        ></li>
+
+        <!-- LIVRO -->
+        <li
+            data-titulo="Quincas Borba"
+            data-autor="Machado de Assis"
+            data-categoria="Literatura brasileira"
+            data-sinopse="Rubião herda a fortuna do filósofo Quincas Borba e sua doutrina do 'Humanitismo', mas a ascensão social o expõe à ganância alheia e a um lento processo de desequilíbrio mental."
+            data-capa="assets/Quincas-Borba-machado-de-assis.jpg"
+            data-pdf="livros/Quincas-Borba-machado-de-assis.pdf"
+        ></li>
+
+        <!-- LIVRO -->
+        <li
+            data-titulo="Vinte Mil Léguas Submarinas"
+            data-autor="Júlio Verne"
+            data-categoria="Ficção científica"
+            data-sinopse="A jornada do professor Aronnax a bordo do submarino Nautilus, comandado pelo misterioso Capitão Nemo, em uma exploração pelas profundezas dos oceanos."
+            data-capa="assets/Julio-Verne-2000-eguas-Submarinas.jpg"
+            data-pdf="livros/Julio-Verne-2000-eguas-Submarinas.pdf"
+        ></li>
+
+        <!-- LIVRO -->
+        <li
+            data-titulo="A Ilha Misteriosa"
+            data-autor="Júlio Verne"
+            data-categoria="Aventura"
+            data-sinopse="Cinco prisioneiros escapam de um cerco em balão e vão parar em uma ilha deserta, onde precisam usar engenhosidade e conhecimento científico para sobreviver e desvendar os mistérios do lugar."
+            data-capa="assets/Julio-Verne-A-ilha-misteriosa.jpg"
+            data-pdf="livros/Julio-Verne-A-ilha-misteriosa.pdf"
+        ></li>
+
+        <!-- LIVRO -->
+        <li
+            data-titulo="A Volta ao Mundo em 80 Dias"
+            data-autor="Júlio Verne"
+            data-categoria="Aventura"
+            data-sinopse="Phileas Fogg aposta que consegue dar a volta ao mundo em oitenta dias e parte em uma viagem cheia de imprevistos ao lado de seu fiel criado Passepartout."
+            data-capa="assets/Julio-Verne-A-Volta-ao-Mundo-em-80-Dias.jpg"
+            data-pdf="livros/Julio-Verne-A-Volta-ao-Mundo-em-80-Dias.pdf"
+        ></li>
+
+        <!-- LIVRO -->
+        <li
+            data-titulo="Da Terra à Lua"
+            data-autor="Júlio Verne"
+            data-categoria="Ficção científica"
+            data-sinopse="Membros de um clube de artilharia dos Estados Unidos decidem construir um canhão gigante capaz de lançar um projétil tripulado até a Lua."
+            data-capa="assets/Julio-Verne-Da-Terra-a-Lua.jpg"
+            data-pdf="livros/Julio-Verne-Da-Terra-a-Lua.pdf"
+        ></li>
+
+    </ul>
+
+    <!-- ===================================================================
          LAYOUT PRINCIPAL: BARRA LATERAL DE CATEGORIAS + CONTEÚDO
     ==================================================================== -->
     <div class="layout-com-barra-lateral">
@@ -56,8 +241,8 @@
         <!-- ---------------------------------------------------------------
              BARRA LATERAL DE CATEGORIAS
              A lista de categorias é montada automaticamente pelo
-             scripts.js, a partir das categorias presentes em
-             "listaDeLivros". Clicar em uma categoria filtra o acervo.
+             scripts.js, a partir das categorias presentes na lista de
+             livros acima. Clicar em uma categoria filtra o acervo.
         ---------------------------------------------------------------- -->
         <aside class="barra-lateral" aria-label="Categorias de livros">
             <h2 class="barra-lateral__titulo">Categorias</h2>

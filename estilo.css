@@ -34,8 +34,8 @@
     --cor-borda: #e3e8f0;               /* bordas e divisórias sutis */
     --cor-texto-principal: #16233a;     /* azul-marinho escuro, cor principal de texto (combina com o logotipo) */
     --cor-texto-secundario: #5b6b82;    /* cinza-azulado, para textos de apoio (autor, categoria, contadores) */
-    --cor-destaque: #1f6fd8;            /* azul do logotipo, cor de destaque (categoria ativa, links, botões) */
-    --cor-destaque-forte: #3f8ef5;      /* azul mais claro, usado em hover/foco */
+    --cor-destaque: #3f4753;            /* cinza escuro, cor de destaque (categoria ativa, links, botões) */
+    --cor-destaque-forte: #5c6673;      /* cinza um pouco mais claro, usado em hover/foco */
 
     /* Tipografia */
     --fonte-titulos: "Lora", Georgia, "Times New Roman", serif;
@@ -231,14 +231,14 @@ input:focus-visible {
 }
 
 .botao-categoria:hover {
-    background-color: rgba(31, 111, 216, 0.08);
+    background-color: rgba(63, 71, 83, 0.08);
     color: var(--cor-texto-principal);
 }
 
 /* Categoria atualmente selecionada, destacada com a cor de destaque */
 .botao-categoria.esta-selecionada {
     border-left-color: var(--cor-destaque);
-    background-color: rgba(31, 111, 216, 0.1);
+    background-color: rgba(63, 71, 83, 0.1);
     color: var(--cor-destaque);
     font-weight: 600;
 }
@@ -378,12 +378,15 @@ input:focus-visible {
 
 /* -------------------------------------------------------------------------
    9. MODAL DE DETALHES DO LIVRO
-   Janela que se abre por cima da página (via tag <dialog>), mostrando a
-   sinopse do livro antes de abrir o PDF, além de outros livros do(a)
-   mesmo(a) autor(a).
+   Janela que se abre por cima da página (tag nativa <dialog>), mostrando
+   a sinopse do livro antes de abrir o PDF, além de outros livros do(a)
+   mesmo(a) autor(a). O navegador já cuida sozinho de centralizar a
+   caixa, escurecer o fundo, travar o foco e fechar com a tecla Esc —
+   por isso não há nenhuma classe "esta-aberto" nem trava manual de
+   rolagem aqui: é tudo comportamento nativo do <dialog>.
 ---------------------------------------------------------------------------- */
 
-/* Caixa do modal em si */
+/* Caixa do modal em si (o próprio elemento <dialog>) */
 .modal-livro {
     width: min(40rem, 90vw);
     max-height: 85vh;
@@ -396,7 +399,7 @@ input:focus-visible {
     box-shadow: 0 20px 45px rgba(22, 35, 58, 0.25);
 }
 
-/* Fundo escurecido atrás do modal */
+/* Fundo escurecido atrás do modal, desenhado automaticamente pelo navegador */
 .modal-livro::backdrop {
     background-color: rgba(15, 23, 42, 0.55);
 }

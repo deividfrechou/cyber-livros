@@ -3,33 +3,78 @@ CYBER LIVROS — PASTA "livros/"
 
 Esta pasta deve conter os arquivos PDF dos livros exibidos no site.
 
-O arquivo "scripts.js" já está pronto para funcionar assim que você
-colocar aqui os PDFs com EXATAMENTE estes nomes:
+COMO CADASTRAR UM LIVRO (a partir de agora, direto no HTML)
+--------------------------------------------------------------
+Os livros não ficam mais no arquivo "scripts.js". Agora eles são
+cadastrados direto no "index.htm", dentro de uma lista escondida com o
+id "dados-dos-livros" (procure por "FONTE DE DADOS DOS LIVROS" no
+arquivo). Cada livro é um item assim:
 
+    <li
+        data-titulo="Nome do Livro"
+        data-autor="Nome do Autor"
+        data-categoria="Categoria do livro"
+        data-sinopse="Um resumo curto sobre o livro."
+        data-capa="assets/nome-do-arquivo-da-capa.jpg"
+        data-pdf="livros/nome-do-arquivo.pdf"
+    ></li>
+
+Para adicionar um novo livro:
+  1. Copie um dos itens <li> já existentes no index.htm.
+  2. Troque os valores de cada atributo "data-*" pelos dados do novo livro.
+  3. Coloque a capa na pasta "assets/" (sem subpasta) e o PDF nesta
+     pasta "livros/", usando os mesmos nomes de arquivo escritos em
+     "data-capa" e "data-pdf".
+
+Não é necessário editar o "scripts.js": ele lê automaticamente os
+livros cadastrados no HTML.
+
+ORDEM DE EXIBIÇÃO
+-------------------
+Os livros aparecem sempre em ORDEM ALFABÉTICA pelo título, calculada
+automaticamente pelo scripts.js. Não importa a ordem em que você
+cadastra os itens <li> no HTML.
+
+ARQUIVOS PDF ESPERADOS NESTA PASTA (para os livros já cadastrados)
+---------------------------------------------------------------------
   1. 48-leis-do-poder.pdf
   2. casais-inteligentes-enriquecem-juntos.pdf
   3. codigo-limpo.pdf
   4. como-fazer-amigos-e-influenciar-pessoas.pdf
   5. harry-potter-e-a-ordem-da-fenix.pdf
+  6. Dom-Casmurro-machado-de-assis.pdf
+  7. Helena-machado-de-assis.pdf
+  8. Memorias-Postumas-de-Bras-Cubas-machado-de-assis.pdf
+  9. O-Alienista-machado-de-assis.pdf
+  10. o-espelho-machado-de-assis.pdf
+  11. Quincas-Borba-machado-de-assis.pdf
+  12. Julio-Verne-2000-eguas-Submarinas.pdf
+  13. Julio-Verne-A-ilha-misteriosa.pdf
+  14. Julio-Verne-A-Volta-ao-Mundo-em-80-Dias.pdf
+  15. Julio-Verne-Da-Terra-a-Lua.pdf
+
+Os itens 6 a 15 (Machado de Assis e Júlio Verne) são de domínio
+público — podem ser distribuídos livremente. Os itens 1 a 5 têm
+direitos autorais vigentes; veja o aviso abaixo antes de colocá-los.
 
 IMPORTANTE — DIREITOS AUTORAIS
 -------------------------------
-Os 5 livros acima são obras com direitos autorais vigentes (não são de
-domínio público). Publicá-los para leitura ou download gratuito em um
-site, mesmo sem fins lucrativos, pode configurar violação de direitos
-autorais perante a lei brasileira (Lei 9.610/1998) e as editoras
-responsáveis.
+Os itens 1 a 5 acima (48 Leis do Poder, Casais Inteligentes Enriquecem
+Juntos, Código Limpo, Como Fazer Amigos e Influenciar Pessoas, Harry
+Potter e a Ordem da Fênix) são obras com direitos autorais vigentes
+(não são de domínio público). Publicá-los para leitura ou download
+gratuito em um site, mesmo sem fins lucrativos, pode configurar
+violação de direitos autorais perante a lei brasileira (Lei 9.610/1998)
+e as editoras responsáveis.
+
+Por esse mesmo motivo, alguns outros títulos que você mencionou não
+foram cadastrados no site: a saga Harry Potter completa, "O Poder do
+Hábito", "Pai Rico, Pai Pobre" e o "Manual Diagnóstico e Estatístico
+de Transtornos Mentais" — todos com direitos autorais vigentes (o
+último, inclusive, é um manual clínico profissional).
 
 Antes de colocar qualquer PDF nesta pasta, use apenas:
   - obras de domínio público (ex.: dominiopublico.gov.br,
     Project Gutenberg, autores falecidos há mais de 70 anos); ou
   - obras que você tenha autorização/licença expressa do autor ou
     da editora para distribuir gratuitamente.
-
-COMO ADICIONAR NOVOS LIVROS NO FUTURO
---------------------------------------
-1. Coloque o novo arquivo PDF nesta pasta.
-2. Coloque a capa correspondente na pasta "assets/capas/".
-3. Abra o arquivo "scripts.js" e adicione um novo item dentro da
-   constante "listaDeLivros", seguindo o mesmo modelo dos livros
-   já cadastrados. Não é necessário alterar o HTML.
