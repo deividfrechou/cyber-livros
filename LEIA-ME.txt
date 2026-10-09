@@ -35,28 +35,6 @@ Os livros aparecem sempre em ORDEM ALFABÉTICA pelo título, calculada
 automaticamente pelo scripts.js. Não importa a ordem em que você
 cadastra os itens <li> no HTML.
 
-ARQUIVOS PDF ESPERADOS NESTA PASTA (para os livros já cadastrados)
----------------------------------------------------------------------
-  1. 48-leis-do-poder.pdf
-  2. casais-inteligentes-enriquecem-juntos.pdf
-  3. codigo-limpo.pdf
-  4. como-fazer-amigos-e-influenciar-pessoas.pdf
-  5. harry-potter-e-a-ordem-da-fenix.pdf
-  6. Dom-Casmurro-machado-de-assis.pdf
-  7. Helena-machado-de-assis.pdf
-  8. Memorias-Postumas-de-Bras-Cubas-machado-de-assis.pdf
-  9. O-Alienista-machado-de-assis.pdf
-  10. o-espelho-machado-de-assis.pdf
-  11. Quincas-Borba-machado-de-assis.pdf
-  12. Julio-Verne-2000-eguas-Submarinas.pdf
-  13. Julio-Verne-A-ilha-misteriosa.pdf
-  14. Julio-Verne-A-Volta-ao-Mundo-em-80-Dias.pdf
-  15. Julio-Verne-Da-Terra-a-Lua.pdf
-
-Os itens 6 a 15 (Machado de Assis e Júlio Verne) são de domínio
-público — podem ser distribuídos livremente. Os itens 1 a 5 têm
-direitos autorais vigentes; veja o aviso abaixo antes de colocá-los.
-
 IMPORTANTE — DIREITOS AUTORAIS
 -------------------------------
 Os itens 1 a 5 acima (48 Leis do Poder, Casais Inteligentes Enriquecem
