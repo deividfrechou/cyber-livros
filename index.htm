@@ -27,10 +27,6 @@
         <div class="cabecalho__identidade">
             <img class="logotipo" src="assets/logo.png" alt="Cyber Livros">
             <div class="cabecalho__textos">
-                <!-- O nome "Cyber Livros" já aparece desenhado dentro do logotipo.
-                     Por isso o título fica como texto visualmente oculto: continua
-                     existindo para leitores de tela e para SEO, sem duplicar o
-                     nome na tela. -->
                 <h1 class="cabecalho__titulo rotulo-visualmente-oculto">Cyber Livros</h1>
                 <p class="cabecalho__slogan">biblioteca aberta é incentivo a cultura</p>
             </div>
@@ -50,38 +46,14 @@
 
     <!-- ===================================================================
          FONTE DE DADOS DOS LIVROS
-         =========================================================================
+         ===================================================================
          Esta lista NÃO aparece na tela (está com o atributo "hidden").
          Ela existe só para você cadastrar os livros do acervo aqui, direto
-         no HTML, sem precisar editar o arquivo scripts.js.
+         no HTML, sem precisar editar o arquivo scripts.js.-->
 
-         O scripts.js lê os atributos "data-*" de cada item abaixo e monta
-         toda a página automaticamente (grade de livros, categorias,
-         busca, modal de detalhes). Os livros são exibidos em ORDEM
-         ALFABÉTICA pelo título, então não importa a ordem em que você
-         os cadastra aqui.
-
-         COMO ADICIONAR UM NOVO LIVRO:
-           1. Copie um dos blocos de livro abaixo — cada um começa com o
-              marcador "LIVRO" e termina no fechamento do item — e cole
-              antes da linha que fecha esta lista.
-           2. Troque os valores de cada atributo "data-*" pelos dados do
-              novo livro.
-           3. Coloque a imagem da capa na pasta "assets/" e o arquivo PDF
-              na pasta "livros/", usando os mesmos nomes de arquivo que
-              você escreveu em "data-capa" e "data-pdf".
-
-         ATRIBUTOS DE CADA LIVRO:
-           data-titulo    -> nome do livro
-           data-autor     -> nome do autor (ou autores)
-           data-categoria -> gênero ou área do livro (usada na barra lateral)
-           data-sinopse   -> resumo curto, mostrado no modal de detalhes
-           data-capa      -> caminho da imagem da capa (pasta "assets/")
-           data-pdf       -> caminho do arquivo PDF (pasta "livros/")
-    ==================================================================== -->
     <ul id="dados-dos-livros" class="dados-dos-livros" hidden>
 
-        <!-- LIVRO -->
+        <!-- LIVROS -->
         <li
             data-titulo="Casais Inteligentes Enriquecem Juntos"
             data-autor="Gustavo Cerbasi"
@@ -91,7 +63,6 @@
             data-pdf="livros/casais-inteligentes-enriquecem-juntos.pdf"
         ></li>
 
-        <!-- LIVRO -->
         <li
             data-titulo="Harry Potter e a Ordem da Fênix"
             data-autor="J.K. Rowling"
@@ -101,7 +72,6 @@
             data-pdf="livros/harry-Potte-e-a-Ordem-da-fenix.pdf"
         ></li>
 
-        <!-- LIVRO -->
         <li
             data-titulo="Dom Casmurro"
             data-autor="Machado de Assis"
@@ -111,7 +81,6 @@
             data-pdf="livros/Dom-Casmurro-machado-de-assis.pdf"
         ></li>
 
-        <!-- LIVRO -->
         <li
             data-titulo="Helena"
             data-autor="Machado de Assis"
@@ -121,7 +90,6 @@
             data-pdf="livros/Helena-machado-de-assis.pdf"
         ></li>
 
-        <!-- LIVRO -->
         <li
             data-titulo="Memórias Póstumas de Brás Cubas"
             data-autor="Machado de Assis"
@@ -131,7 +99,6 @@
             data-pdf="livros/Memorias-Postumas-de-Bras-Cubas-machado-de-assis.pdf"
         ></li>
 
-        <!-- LIVRO -->
         <li
             data-titulo="O Alienista"
             data-autor="Machado de Assis"
@@ -141,7 +108,6 @@
             data-pdf="livros/O-Alienista-machado-de-assis.pdf"
         ></li>
 
-        <!-- LIVRO -->
         <li
             data-titulo="O Espelho"
             data-autor="Machado de Assis"
@@ -151,7 +117,6 @@
             data-pdf="livros/o-espelho-machado-de-assis.pdf"
         ></li>
 
-        <!-- LIVRO -->
         <li
             data-titulo="Quincas Borba"
             data-autor="Machado de Assis"
@@ -161,7 +126,6 @@
             data-pdf="livros/Quincas-Borba-machado-de-assis.pdf"
         ></li>
 
-        <!-- LIVRO -->
         <li
             data-titulo="Vinte Mil Léguas Submarinas"
             data-autor="Júlio Verne"
@@ -171,7 +135,6 @@
             data-pdf="livros/Julio-Verne-2000-eguas-Submarinas.pdf"
         ></li>
 
-        <!-- LIVRO -->
         <li
             data-titulo="A Ilha Misteriosa"
             data-autor="Júlio Verne"
@@ -181,7 +144,6 @@
             data-pdf="livros/Julio-Verne-A-ilha-misteriosa.pdf"
         ></li>
 
-        <!-- LIVRO -->
         <li
             data-titulo="A Volta ao Mundo em 80 Dias"
             data-autor="Júlio Verne"
@@ -191,7 +153,6 @@
             data-pdf="livros/Julio-Verne-A-Volta-ao-Mundo-em-80-Dias.pdf"
         ></li>
 
-        <!-- LIVRO -->
         <li
             data-titulo="Da Terra à Lua"
             data-autor="Júlio Verne"
@@ -200,6 +161,79 @@
             data-capa="assets/Julio-Verne-Da-Terra-a-Lua.jpg"
             data-pdf="livros/Julio-Verne-Da-Terra-a-Lua.pdf"
         ></li>
+
+        <li
+            data-titulo="100 Historias Infantis"
+            data-autor="Diversos"
+            data-categoria="Infantil"
+            data-sinopse="Coletânea de histórias infantis que convida as crianças a explorar mundos de fantasia, conhecer personagens encantadores e viver aventuras cheias de imaginação, descobertas e aprendizado."
+            data-capa="assets/100-Historias-Infantis.jpg"
+            data-pdf="livros/100-Historias-Infantis.pdf"
+        ></li>
+
+        <li
+            data-titulo="A Arte da Guerra"
+            data-autor="Sun Tzu"
+            data-categoria="Estratégia"
+            data-sinopse="Clássico tratado militar chinês que apresenta princípios estratégicos essenciais sobre liderança, planejamento, táticas de combate e gestão de conflitos, aplicáveis tanto na guerra quanto na vida cotidiana."
+            data-capa="assets/a-arte-da-guerra.jpg"
+            data-pdf="livros/a-arte-da-guerra.pdf"
+        ></li>
+
+        <li
+            data-titulo="A Revolução dos Bichos"
+            data-autor="George Orwell"
+            data-categoria="Ficção"
+            data-sinopse="Fábula satírica e política que narra a rebelião dos animais de uma fazenda contra seus donos humanos em busca de igualdade, revelando como a sede pelo poder pode corromper os ideais mais nobres."
+            data-capa="assets/a-revolucao-dos-bichos.jpg"
+            data-pdf="livros/a-revolucao-dos-bichos.pdf"
+        ></li>
+
+        <li
+            data-titulo="O Menino Maluquinho"
+            data-autor="Ziraldo"
+            data-categoria="Infantil"
+            data-sinopse="Uma charmosa obra da literatura infantil brasileira que conta a história de um garoto alegre, muito esperto e cheio de imaginação, que apronta travessuras com uma panela na cabeça e descobre o verdadeiro valor da infância e do afeto."
+            data-capa="assets/O-Menino-Maluquinho.jpg"
+            data-pdf="livros/O-Menino-Maluquinho.pdf"
+        ></li>
+
+        <li
+            data-titulo="O Morro dos Ventos Uivantes"
+            data-autor="Emily Brontë"
+            data-categoria="Romance"
+            data-sinopse="Um clássico da literatura mundial focado na intensa, trágica e obsessiva paixão entre Heathcliff e Catherine, ambientada nas gélidas e misteriosas colinas da Inglaterra."
+            data-capa="assets/o-morro-dos-ventos-uivantes.jpg"
+            data-pdf="livros/o-morro-dos-ventos-uivantes.pdf"
+        ></li>
+
+        <li
+            data-titulo="O Pequeno Príncipe"
+            data-autor="Antoine de Saint-Exupéry"
+            data-categoria="Infantojuvenil"
+            data-sinopse="Narrativa poética e poética que acompanha a jornada de um pequeno príncipe vindo de um asteroide distante; ao viajar por diversos planetas, ele aprende lições inesquecíveis sobre amor, amizade e a essência da vida."
+            data-capa="assets/O-Pequeno-Príncipe.jpg"
+            data-pdf="livros/O-Pequeno-Príncipe.pdf"
+        ></li>
+
+        <li
+            data-titulo="Romeu e Julieta"
+            data-autor="William Shakespeare"
+            data-categoria="Drama"
+            data-sinopse="Famosa tragédia teatral que aborda a paixão arrebatadora de dois jovens pertencentes a famílias inimigas na cidade de Verona, culminando em um destino marcante e atemporal."
+            data-capa="assets/Romeu-e-Julieta.jpg"
+            data-pdf="livros/Romeu-e-Julieta.pdf"
+        ></li>
+
+        <li
+            data-titulo="Um Castelo Bem Assombrado"
+            data-autor="Lícia Holanda"
+            data-categoria="Infantil"
+            data-sinopse="Obra infantil ilustrada que convida os pequenos leitores a explorar um misterioso e divertido castelo cheio de mistérios e criaturas misteriosas de forma lúdica."
+            data-capa="assets/um-castelo-bem-assombrado.jpg"
+            data-pdf="livros/um-castelo-bem-assombrado.pdf"
+        ></li>
+
 
     </ul>
 
@@ -212,7 +246,7 @@
              BARRA LATERAL DE CATEGORIAS
              A lista de categorias é montada automaticamente pelo
              scripts.js, a partir das categorias presentes na lista de
-             livros acima. Clicar em uma categoria filtra o acervo.
+             livros.
         ---------------------------------------------------------------- -->
         <aside class="barra-lateral" aria-label="Categorias de livros">
             <h2 class="barra-lateral__titulo">Categorias</h2>
@@ -249,6 +283,7 @@
          RODAPÉ
     ==================================================================== -->
     <footer class="rodape">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeJXYiuNa90NTyUNT7ezgEaRxN3A1fqlIn-eC-zQ2DybMw8aQ/viewform?embedded=true" width="340" height="237" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
         <p>
             Cyber Livros é um projeto de biblioteca digital aberta.
             Os livros disponibilizados aqui são obras de domínio público
@@ -259,12 +294,6 @@
 
     <!-- ===================================================================
          MODAL DE DETALHES DO LIVRO
-         Fica escondido por padrão (tag <dialog>). Ao clicar em um livro,
-         o scripts.js preenche este modal com a capa, o título, o autor,
-         a sinopse e outros livros do(a) mesmo(a) autor(a), e o abre por
-         cima da própria página — sem navegar para outra URL.
-         O botão "Ler agora" é o único link que efetivamente leva ao PDF,
-         aberto na mesma aba.
     ==================================================================== -->
     <dialog id="modal-livro" class="modal-livro" aria-labelledby="modal-livro-titulo">
         <button type="button" id="botao-fechar-modal" class="modal-livro__fechar" aria-label="Fechar">

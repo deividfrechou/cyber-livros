@@ -1,30 +1,10 @@
 /* =========================================================================
    CYBER LIVROS — FOLHA DE ESTILOS (estilo.css)
-   =========================================================================
-   Este arquivo controla toda a aparência visual do site: cores, tipografia,
-   espaçamentos e o comportamento responsivo (adaptação para celular, tablet
-   e computador).
-
-   O layout é inspirado em catálogos de livraria: uma barra superior com
-   busca, uma barra lateral de categorias e uma grade de capas de livro.
-   O fundo é claro (branco), com o azul do logotipo usado como cor de
-   destaque em toda a interface.
-
-   O arquivo está organizado em blocos, na seguinte ordem:
-     1. Variáveis globais (cores, fontes, espaçamentos)
-     2. Reset básico e estilos gerais do corpo da página
-     3. Cabeçalho (logotipo + busca)
-     4. Layout com barra lateral (grade de duas colunas)
-     5. Barra lateral de categorias
-     6. Seção do acervo
-     7. Cartões de livro
-     8. Rodapé
-     9. Responsividade (telas pequenas)
-   ========================================================================= */
+   =========================================================================*/
 
 
 /* -------------------------------------------------------------------------
-   1. VARIÁVEIS GLOBAIS
+   VARIÁVEIS GLOBAIS
 ---------------------------------------------------------------------------- */
 :root {
     /* Cores principais */
@@ -55,7 +35,7 @@
 
 
 /* -------------------------------------------------------------------------
-   2. RESET BÁSICO E ESTILOS GERAIS
+   RESET BÁSICO E ESTILOS GERAIS
 ---------------------------------------------------------------------------- */
 *,
 *::before,
@@ -118,7 +98,7 @@ input:focus-visible {
 
 
 /* -------------------------------------------------------------------------
-   3. CABEÇALHO (LOGOTIPO + BUSCA)
+   CABEÇALHO (LOGOTIPO + BUSCA)
 ---------------------------------------------------------------------------- */
 .cabecalho {
     background-color: var(--cor-fundo-secao);
@@ -176,7 +156,7 @@ input:focus-visible {
 
 
 /* -------------------------------------------------------------------------
-   4. LAYOUT COM BARRA LATERAL (duas colunas: categorias + conteúdo)
+   LAYOUT COM BARRA LATERAL (duas colunas: categorias + conteúdo)
 ---------------------------------------------------------------------------- */
 .layout-com-barra-lateral {
     flex: 1;
@@ -190,7 +170,7 @@ input:focus-visible {
 
 
 /* -------------------------------------------------------------------------
-   5. BARRA LATERAL DE CATEGORIAS
+   BARRA LATERAL DE CATEGORIAS
 ---------------------------------------------------------------------------- */
 .barra-lateral {
     background-color: var(--cor-fundo-secao);
@@ -245,7 +225,7 @@ input:focus-visible {
 
 
 /* -------------------------------------------------------------------------
-   6. SEÇÃO DO ACERVO
+   SEÇÃO DO ACERVO
 ---------------------------------------------------------------------------- */
 .conteudo-principal {
     padding: var(--espaco-extra-grande) var(--espaco-grande);
@@ -360,7 +340,7 @@ input:focus-visible {
 
 
 /* -------------------------------------------------------------------------
-   8. RODAPÉ
+    RODAPÉ
 ---------------------------------------------------------------------------- */
 .rodape {
     background-color: var(--cor-fundo-secao);
@@ -377,13 +357,8 @@ input:focus-visible {
 
 
 /* -------------------------------------------------------------------------
-   9. MODAL DE DETALHES DO LIVRO
-   Janela que se abre por cima da página (tag nativa <dialog>), mostrando
-   a sinopse do livro antes de abrir o PDF, além de outros livros do(a)
-   mesmo(a) autor(a). O navegador já cuida sozinho de centralizar a
-   caixa, escurecer o fundo, travar o foco e fechar com a tecla Esc —
-   por isso não há nenhuma classe "esta-aberto" nem trava manual de
-   rolagem aqui: é tudo comportamento nativo do <dialog>.
+   MODAL DE DETALHES DO LIVRO
+   Janela que se abre por cima da página (tag nativa <dialog>).
 ---------------------------------------------------------------------------- */
 
 /* Caixa do modal em si (o próprio elemento <dialog>) */
@@ -555,7 +530,7 @@ input:focus-visible {
 
 
 /* -------------------------------------------------------------------------
-   10. RESPONSIVIDADE — telas menores (tablets e celulares)
+   RESPONSIVIDADE — telas menores (tablets e celulares)
 ---------------------------------------------------------------------------- */
 @media (max-width: 60rem) {
     /* A barra lateral vira uma faixa horizontal de categorias no topo,

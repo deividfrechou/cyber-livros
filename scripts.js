@@ -1,32 +1,3 @@
-/* =========================================================================
-   CYBER LIVROS — LÓGICA DO SITE (scripts.js)
-   =========================================================================
-   Este arquivo é responsável por:
-     1. Ler os dados dos livros a partir do próprio HTML (lista escondida
-        "#dados-dos-livros" em index.htm) e ordená-los alfabeticamente;
-     2. Montar a barra lateral de categorias, a partir desses dados;
-     3. Montar a grade do acervo completo;
-     4. Filtrar os livros por categoria selecionada e/ou termo de busca;
-     5. Abrir, ao clicar em um livro, um MODAL (a tag nativa <dialog>,
-        exibida sobre a própria página pelo método "showModal()") com a
-        sinopse e outros livros do(a) mesmo(a) autor(a), sem nunca sair
-        da página inicial;
-     6. Abrir o PDF do livro NA MESMA ABA quando o usuário confirma a
-        leitura, clicando no botão "Ler agora" dentro do modal.
-
-   IMPORTANTE — DE ONDE VÊM OS DADOS DOS LIVROS:
-   Os livros NÃO são cadastrados aqui neste arquivo. Eles são cadastrados
-   direto no "index.htm", dentro da lista escondida com o id
-   "dados-dos-livros" (cada livro é um item <li> com atributos "data-*").
-   Para adicionar um novo livro, edite o HTML — veja as instruções
-   detalhadas lá mesmo, no comentário acima dessa lista.
-
-   O modal de detalhes usa a tag nativa <dialog>: o navegador cuida
-   sozinho de centralizar a caixa, escurecer o fundo, travar o foco
-   dentro do modal e fechar com a tecla Esc. Por isso não há nenhum
-   código manual para essas partes neste arquivo.
-   ========================================================================= */
-
 "use strict";
 
 
@@ -34,17 +5,13 @@
 const CATEGORIA_TODOS = "Todos";
 
 /**
- * Lista de livros do acervo, em memória. Começa vazia e é preenchida
- * pela função "carregarLivrosDoHtml()", assim que a página carrega.
  * @type {Array<Object>}
  */
 let listaDeLivros = [];
 
 
 /* -------------------------------------------------------------------------
-   1. ESTADO ATUAL DOS FILTROS
-   Guarda o que o usuário selecionou até agora (categoria e busca), para
-   que os dois filtros possam ser aplicados juntos.
+   ESTADO ATUAL DOS FILTROS
 ---------------------------------------------------------------------------- */
 const estadoDosFiltros = {
     categoriaSelecionada: CATEGORIA_TODOS,
@@ -53,7 +20,7 @@ const estadoDosFiltros = {
 
 
 /* -------------------------------------------------------------------------
-   2. REFERÊNCIAS AOS ELEMENTOS DA PÁGINA (HTML)
+   REFERÊNCIAS AOS ELEMENTOS DA PÁGINA (HTML)
 ---------------------------------------------------------------------------- */
 const elementoDadosDosLivros = document.getElementById("dados-dos-livros");
 const elementoListaCategorias = document.getElementById("lista-categorias");
@@ -78,14 +45,10 @@ const elementoModalListaMaisDoAutor = document.getElementById("modal-livro-lista
 
 
 /* -------------------------------------------------------------------------
-   3. LEITURA DOS DADOS DOS LIVROS (A PARTIR DO HTML)
+   LEITURA DOS DADOS DOS LIVROS (A PARTIR DO HTML)
 ---------------------------------------------------------------------------- */
 
 /**
- * Lê os livros cadastrados no HTML (dentro de "#dados-dos-livros"),
- * converte cada item em um objeto de livro e devolve a lista já
- * ORDENADA em ordem alfabética pelo título.
- *
  * @returns {Array<Object>} Lista de livros lida do HTML, ordenada por título.
  */
 function carregarLivrosDoHtml() {
@@ -111,7 +74,7 @@ function carregarLivrosDoHtml() {
 
 
 /* -------------------------------------------------------------------------
-   4. FUNÇÕES DE APOIO (CATEGORIAS)
+   FUNÇÕES DE APOIO (CATEGORIAS)
 ---------------------------------------------------------------------------- */
 
 /**
@@ -136,7 +99,7 @@ function obterCategoriasDisponiveis() {
 
 
 /* -------------------------------------------------------------------------
-   5. FUNÇÕES DE MONTAGEM DA TELA (CARTÕES E GRADE)
+   FUNÇÕES DE MONTAGEM DA TELA (CARTÕES E GRADE)
 ---------------------------------------------------------------------------- */
 
 /**
@@ -236,7 +199,7 @@ function renderizarCategorias() {
 
 
 /* -------------------------------------------------------------------------
-   6. MODAL DE DETALHES DO LIVRO (SINOPSE + MAIS DO(A) AUTOR(A))
+   MODAL DE DETALHES DO LIVRO (SINOPSE)
    Implementado com a tag nativa <dialog>: o navegador cuida sozinho do
    fundo escurecido (::backdrop), do fechamento com a tecla Esc e de
    manter o foco do teclado dentro do modal enquanto ele está aberto.
@@ -338,7 +301,7 @@ function fecharModalDoLivro() {
 
 
 /* -------------------------------------------------------------------------
-   7. FILTROS (CATEGORIA + BUSCA) E ATUALIZAÇÃO GERAL DA TELA
+   FILTROS (CATEGORIA + BUSCA) E ATUALIZAÇÃO GERAL DA TELA
 ---------------------------------------------------------------------------- */
 
 /**
@@ -416,7 +379,7 @@ function tratarDigitacaoNaBusca() {
 
 
 /* -------------------------------------------------------------------------
-   8. INICIALIZAÇÃO DA PÁGINA
+   INICIALIZAÇÃO DA PÁGINA
    Função executada assim que o HTML termina de carregar.
 ---------------------------------------------------------------------------- */
 function inicializarPagina() {
